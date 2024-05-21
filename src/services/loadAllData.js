@@ -1,7 +1,11 @@
 const { Firestore } = require('@google-cloud/firestore');
+const projectId = 'submissionmlgc-ubaydillah';
 
 async function getAllData(){
-  const db = new Firestore();
+  const db = new Firestore({
+    projectId,
+  }
+  );
   const snapshotData = await db.collection('predictions').get();
   const allData = [];
 
