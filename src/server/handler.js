@@ -1,7 +1,6 @@
 const predictClassification = require('../services/inferenceService');
 const crypto = require('crypto');
-const storeData = require('../services/storeData');
-const loadAllData = require('../services/loadAllData');
+const { storeData, getAllData } = require('../services/storeData');
 
 async function postPredictHandler (request, h) {
   const imageBuffer = Buffer.from(request.payload.image);
@@ -21,7 +20,7 @@ async function postPredictHandler (request, h) {
   await storeData(id, data);
   const response = h.response({
     status: 'success',
-    message : 'Model is predicted successfully.',
+    message : 'Model is predicted successfully',
     data,
   });
   response.code(201);
@@ -29,7 +28,7 @@ async function postPredictHandler (request, h) {
 }
 
 async function getAllDataHandler(request, h) {
-  const allData = await loadAllData();
+  const allData = await getAllData();
   const response = h.response({
     status: "success",
     data: allData,
