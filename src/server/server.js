@@ -7,7 +7,7 @@ const InputError = require('../exceptions/InputError');
 
 (async () => {
   const server = Hapi.server({
-    port: 3000,
+    port: proccess.env.PORT,
     host: '0.0.0.0',
     routes: {
       cors:  {
